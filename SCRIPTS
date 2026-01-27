@@ -1171,8 +1171,51 @@ draw_bar <faa><afa>
 #BUTTON {1;1;5;-1;SCROLLED MOUSE WHEEL DOWN} {#comm #buffer down 1}
 
 #nop -------------------------------------------------------------------------
-#nop 
+#nop Enable the kitty terminal input extensions as specified at:
+#nop   https://sw.kovidgoyal.net/kitty/keyboard-protocol/
+#nop This allows the numpad keys to be bound properly.  Tested
+#nop with Kitty and Ghostty terminals.
 #nop -------------------------------------------------------------------------
+
+#alias kitty_keypad {
+    #if {"%1" == "on"} {
+        #showme >>> enabling kitty input;
+        #showme {\e[>1u};
+        #nop Set up the numpad keys ;
+        #macro {^\e[57423u} {nw};
+        #macro {^\e[57419u} {n};
+        #macro {^\e[57421u} {ne};
+        #macro {^\e[57417u} {w};
+        #macro {^\e[57427u} {!};
+        #macro {^\e[57418u} {e};
+        #macro {^\e[57424u} {sw};
+        #macro {^\e[57420u} {s};
+        #macro {^\e[57422u} {se};
+        #nop Rebind the line editor keys ;
+        #macro {\e[97;5u} {#cursor {HOME}};
+        #macro {\e[98;5u} {#cursor {BACKWARD}};
+        #macro {\e[100;5u} {#cursor {CTRL DELETE}};
+        #macro {\e[101;5u} {#cursor {END}};
+        #macro {\e[102;5u} {#cursor {FORWARD}};
+        #macro {\e[104;5u} {#cursor {BACKSPACE}};
+        #macro {\e[107;5u} {#cursor {CLEAR RIGHT}};
+        #macro {\e[110;5u} {#cursor {HISTORY NEXT}};
+        #macro {\e[112;5u} {#cursor {HISTORY PREV}};
+        #macro {\e[114;5u} {#cursor {HISTORY SEARCH}};
+        #macro {\e[117;5u} {#cursor {CLEAR LEFT}};
+        #macro {\e[118;5u} {#cursor {CONVERT META}};
+        #macro {\e[119;5u} {#cursor {DELETE WORD LEFT}};
+        #macro {\e[121;5u} {#cursor {PASTE BUFFER}};
+        #macro {\e[122;5u} {#cursor {SUSPEND}};
+        #nop Try to reset the terminal state at exit. ;
+        #nop Sometimes fails unfortunately, unsure why. ;
+        #event {PROGRAM TERMINATION} {kitty_keypad off};
+    };
+    #if {"%1" == "off"} {
+        #showme >>> disabling kitty input;
+        #showme {\e[<1u};
+    };
+}
 
 #nop -------------------------------------------------------------------------
 #nop 
