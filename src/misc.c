@@ -262,6 +262,13 @@ DO_COMMAND(do_test)
 
 	}
 
+	if (!strcmp(arg1, "prompt"))
+	{
+		SET_BIT(ses->telopts, TELOPT_FLAG_PROMPT);
+		SET_BIT(ses->config_flags, CONFIG_FLAG_AUTOPROMPT);
+
+		return ses;
+	}
 	return ses;
 }
 

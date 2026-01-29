@@ -1,4 +1,18 @@
-- Look into #map find clearing room symbols on rooms with a symbol length of 2-5.
+- Figure out how to deal with large images and packet fragmentation
+  eden-test.rpgframework.de 4000
+
+- #snoop scroll malfunctions if inputregion is changed (should be fixed)
+
+#screen scroll 1 1 20 50
+#screen input 22 1 22 50
+#screen fill default
+#line background #run bla bash
+#bla #cursor echo on
+#bla #screen scroll 1 52 20 101
+#bla #screen input 22 52 22 101
+#snoop bla scroll
+
+#bla #screen input 21 52 21 101
 
 - #config {COMMAND ECHO} mode that echoes all commands as sent to the mud.
 
@@ -33,8 +47,6 @@
 
 - allow a full telnet disable in port.c
 
-- Add message when a substitution exceeds available memory.
-
 - config loglevel medium option
 
 - look into GMCP larger than buffer size
@@ -65,15 +77,11 @@
 
 - #line escape {variables;functions}
 
-- Another nice thing would be if there was some flag to make a trigger match newlines as space.
-
 - add a #regex like command for #cursor to update the input line.
 
 - custom mapping for unicode table to set width
 
 - color code for dynamic color ranges
-
-- Look into delete_index_list leaving a table with ->used set to 0 causing #list crashes
 
 - #daemon attach fails under high cpu load
 

@@ -1,3 +1,7 @@
+Jan 2026        2.02.61
+------------------------------------------------------------------------------
+substitute.c    Fixed a bug causing improper handling of large variables.
+
 Jun 2025        2.02.60
 ------------------------------------------------------------------------------
 cursor.c        Added #cursor flag keypad on/off option.

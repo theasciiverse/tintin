@@ -213,7 +213,7 @@
 
 
 #define CLIENT_NAME              "TinTin++"
-#define CLIENT_VERSION           "2.02.60 "
+#define CLIENT_VERSION           "2.02.61 "
 
 
 #define XT_E                            0x27

@@ -1083,17 +1083,16 @@ int substitute(struct session *ses, char *string, char *result, int flags)
 			*pto++ = *pti++;
 			continue;
 		}
-
+/*
 		if (pto - buffer > BUFFER_SIZE - 1000)
 		{
-			pto += sprintf(pto, "[BUFFER OVERFLOW]");
+			pto += sprintf(pto, "[BUFFER OVERFLOW]"); // causes large variables to fail to load
 			goto eol;
 		}
-
+*/
 		switch (*pti)
 		{
 			case '\0':
-				eol:
 				if (HAS_BIT(flags, SUB_EOL))
 				{
 					if (HAS_BIT(ses->telopts, TELOPT_FLAG_CR|TELOPT_FLAG_LF))
@@ -1181,6 +1180,8 @@ int substitute(struct session *ses, char *string, char *result, int flags)
 
 					if (sesptr == NULL && node == NULL)
 					{
+						show_debug(ses, LIST_FUNCTION, NULL, COLOR_DEBUG "#DEBUG: UNDEFINED FUNCTION " COLOR_BRACE "{" COLOR_STRING "%s" COLOR_BRACE "}", temp);
+
 						while (*pti == '@')
 						{
 							*pto++ = *pti++;

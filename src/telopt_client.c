@@ -449,10 +449,7 @@ int client_translate_telopts(struct session *ses, unsigned char *src, int cplen)
 					break;
 
 				case ASCII_LF:
-					if (HAS_BIT(ses->telopts, TELOPT_FLAG_PROMPT))
-					{
-						DEL_BIT(ses->telopts, TELOPT_FLAG_PROMPT);
-					}
+					DEL_BIT(ses->telopts, TELOPT_FLAG_PROMPT);
 
 					*cpdst++ = *cpsrc++;
 					gtd->mud_output_len++;
@@ -480,14 +477,15 @@ int client_translate_telopts(struct session *ses, unsigned char *src, int cplen)
 					{
 						DEL_BIT(ses->telopts, TELOPT_FLAG_PROMPT);
 
-						/*
-							Fix up non vt muds
-						*/
+						// Fix up non vt muds
 
 						if (HAS_BIT(ses->flags, SES_FLAG_SPLIT) || !IS_SPLIT(ses))
 						{
-							*cpdst++ = '\n';
-							gtd->mud_output_len++;
+							if (!HAS_BIT(ses->telopts, TELOPT_FLAG_SGA))
+							{
+								*cpdst++ = '\n';
+								gtd->mud_output_len++;
+							}
 						}
 					}
 

@@ -317,7 +317,6 @@ void write_line_mud(struct session *ses, char *line, int size)
 		return;
 	}
 
-
 	if (!HAS_BIT(ses->telopts, TELOPT_FLAG_TELNET) && HAS_BIT(ses->charset, CHARSET_FLAG_ALL_TOUTF8))
 	{
 		char buf[BUFFER_SIZE];

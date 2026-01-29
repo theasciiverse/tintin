@@ -500,7 +500,7 @@ int show_buffer(struct session *ses)
 		scroll_cnt--;
 	}
 
-	save_pos(ses);
+	save_pos(gtd->ses);
 
 	if (scroll_cnt == 0) // home
 	{
@@ -611,7 +611,7 @@ int show_buffer(struct session *ses)
 
 	buffer_print(ses, 0, 0, 0);
 
-	restore_pos(ses);
+	restore_pos(gtd->ses);
 
 	if (IS_SPLIT(ses))
 	{
