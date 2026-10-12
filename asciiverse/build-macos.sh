@@ -21,7 +21,10 @@ work=$(mktemp -d)
 curl -sSfL -o "$work/gnutls.tar.xz" "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-$GNUTLS.tar.xz"
 echo "$GNUTLS_SHA256  $work/gnutls.tar.xz" | shasum -a 256 -c -
 tar -xJf "$work/gnutls.tar.xz" -C "$work"
-inc="-I$(brew --prefix gmp)/include -I$(brew --prefix nettle)/include"
+# CRAU_MAYBE_UNUSED: GnuTLS 3.8.13's lib/crau/crau.h picks C23 [[maybe_unused]]
+# when clang reports it, then puts it where clang's default C mode rejects
+# it; the header leaves the macro alone when it is already defined.
+inc="-I$(brew --prefix gmp)/include -I$(brew --prefix nettle)/include -DCRAU_MAYBE_UNUSED="
 (cd "$work/gnutls-$GNUTLS" &&
   ./configure --prefix="$work/gnutls" --enable-static --disable-shared \
     CPPFLAGS="$inc" LDFLAGS="-L$static" \
