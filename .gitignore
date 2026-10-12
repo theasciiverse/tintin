@@ -6,3 +6,9 @@ src/config.status
 src/*.o
 src/tt++
 
+
+# Asciiverse packaging scratch
+/stage/
+/dist/
+/dist-test/
+/.static-libs/

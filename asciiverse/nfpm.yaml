@@ -1,0 +1,40 @@
+# System packages (.deb, .rpm, .apk, Arch) for TinTin++, built by nfpm from
+# the same static binary as the av archive. The release workflow sets
+# VERSION, RELEASE (our packaging release) and ARCH (amd64 or arm64), and
+# puts the binary at stage/tt++.
+#
+# No .desktop file on purpose: av is the one place titles are started from,
+# so Asciiverse packages never add menu entries (asciiverse/CLAUDE.md).
+#
+# Named tintin-asciiverse so it never collides with a distribution's own
+# tintin++ package; it installs the same tt++ command and conflicts with it.
+name: tintin-asciiverse
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: net
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/tintin
+license: GPL-3.0-or-later
+conflicts: [tintin++]
+provides: [tintin++]
+description: |
+  TinTin++, the classic console MUD client.
+  Scripting language, PCRE triggers, a mapper, MCCP and TLS through #ssl.
+  A static build packaged by Asciiverse from github.com/scandum/tintin.
+contents:
+  - src: stage/tt++
+    dst: /usr/bin/tt++
+    file_info:
+      mode: 0755
+  - src: COPYING
+    dst: /usr/share/doc/tintin-asciiverse/copyright
+    file_info:
+      mode: 0644
+  - src: README
+    dst: /usr/share/doc/tintin-asciiverse/README
+    file_info:
+      mode: 0644
