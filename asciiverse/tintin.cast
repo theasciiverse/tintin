@@ -1,4 +1,4 @@
-{"version":3,"term":{"cols":100,"rows":30,"type":"xterm-256color"},"timestamp":1791827020,"idle_time_limit":2.0,"command":"asciiverse/programs/tintin/src/tt++","env":{"LANG":"C.UTF-8","COLORTERM":"truecolor","TERM":"xterm-256color"}}
+{"version":3,"term":{"cols":100,"rows":30,"type":"xterm-256color"},"timestamp":1791827020,"idle_time_limit":2.0,"env":{"LANG":"C.UTF-8","COLORTERM":"truecolor","TERM":"xterm-256color"}}
 [0.002, "o", "\r\u001b[30;1H\u001b[?1000l\u001b[?1002l\u001b[?1006l\u001b[?1016l\u001b[?1004h\u001b=\u001b[>4;1m\u001b[?1049l\u001b[?7787l\u001b[r\r\u001b[30;1H\u001b[0m\u001b[0m\r\n"]
 [0.001, "o", "\u001b[?25l\u001b[0m                  \u001b[1;33mNew Worlds Ateraan \u001b[1;37m- \u001b[1;33m\u001b]8;;http://www.ateraan.com\u0007\u001b[04mhttp://www.ateraan.com\u001b[24m\u001b]8;;\u0007                   \u001b[0m\r\n\u001b[0m\r\u001b[30;1H\u001b[?25h\u001b[0m\u001b[0m\r\n"]
 [0.000, "o", "\u001b[?25l\u001b[0m\u001b[22;37mAteraan is a world of Intensive Roleplaying offering many unique and powerful   \u001b[0m\r\n"]
