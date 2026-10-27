@@ -39,3 +39,9 @@ connections warn if it changes or expires (like SSH).
 
 - Windows: upstream ships WinTin++, which bundles Cygwin and Mintty.
 - Intel Macs: needs Homebrew's Intel libraries on the build runner.
+
+## Ours
+
+- **How to play it, at the top of README.** A short note on installing and
+  starting it with av, or from a release archive; the original text follows
+  unchanged.
